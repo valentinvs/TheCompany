@@ -12,7 +12,7 @@ namespace TheCompany.Web.Frontend.Controllers
         {
             var db = new TheCompany.Web.Frontend.Models.TheCompanyDbContext();
             var menus = db.Menus.ToList();
-            return View();
+            return View(menus);
         }
 
         public ActionResult About()

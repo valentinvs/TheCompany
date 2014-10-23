@@ -7,6 +7,7 @@ namespace TheCompany.Web.Frontend.Migrations
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Validation;
     using System.Linq;
+    using TheCompany.Common;
     using TheCompany.Web.Frontend.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TheCompanyDbContext>
@@ -22,8 +23,11 @@ namespace TheCompany.Web.Frontend.Migrations
             try
             {
                 var db = new ApplicationDbContext();
-                var adminRole = new IdentityRole("AdminRole");
-                db.Roles.AddOrUpdate(adminRole);
+                var adminRole = new IdentityRole(RolesConst.Admin);
+                if (!db.Roles.Any(role => role.Name == RolesConst.Admin))
+                {
+                    db.Roles.AddOrUpdate(adminRole);
+                }
 
                 var adminUser = new ApplicationUser("Admin");
                 adminUser.PasswordHash = new PasswordHasher().HashPassword("Admin");
@@ -35,7 +39,10 @@ namespace TheCompany.Web.Frontend.Migrations
                     UserId = adminUser.Id
                 });
 
-                db.Users.AddOrUpdate(adminUser);
+                if (!db.Users.Any(user => user.UserName == "Admin"))
+                {
+                    db.Users.AddOrUpdate(adminUser);
+                }
 
                 db.SaveChanges();
             }
