@@ -10,6 +10,8 @@ namespace TheCompany.Web.Frontend.Controllers
     {
         public ActionResult Index()
         {
+            var db = new TheCompany.Web.Frontend.Models.TheCompanyDbContext();
+            var menus = db.Menus.ToList();
             return View();
         }
 
