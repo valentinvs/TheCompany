@@ -45,6 +45,8 @@
                     db.Users.AddOrUpdate(adminUser);
                 }
 
+                db.SaveChanges();
+
                 var theCompanyDb = new TheCompanyDbContext();
                 var menu = new Menu();
                 menu.TitleEN = "Starters";
@@ -71,7 +73,17 @@
                     theCompanyDb.SaveChanges();
                 }
 
-                db.SaveChanges();
+                var contactInfo = new ContactInfo();
+                contactInfo.TitleEN = "Opening Times:";
+                contactInfo.TitleBG = "Работно Време:";
+                contactInfo.DescriptionEN = "12:00 pm - 02:00 am";
+                contactInfo.DescriptionBG = "12:00 - 02:00";
+
+                if (!theCompanyDb.ContactInfos.Any(c => c.TitleEN == contactInfo.TitleEN))
+                {
+                    theCompanyDb.ContactInfos.Add(contactInfo);
+                    theCompanyDb.SaveChanges();
+                }
             }
 
             catch (DbEntityValidationException e)

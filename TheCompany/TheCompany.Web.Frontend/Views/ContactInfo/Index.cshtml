@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TheCompany.Data.ContactInfo>
+
+@{
+    ViewBag.Title = "Contact Infos";
+}
+
+<h2>Available Contact Infos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionBG)
+        </th>
+        <th>
+            Admin Operations
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleBG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionBG)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
