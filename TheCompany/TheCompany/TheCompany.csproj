@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\RolesConst.cs" />
+    <Compile Include="Data\ContactInfo.cs" />
     <Compile Include="Data\Menu.cs" />
+    <Compile Include="Data\MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
