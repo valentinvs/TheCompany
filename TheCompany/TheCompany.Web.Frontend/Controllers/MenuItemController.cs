@@ -10,9 +10,11 @@ namespace TheCompany.Web.Frontend.Controllers
     {
         //
         // GET: /MenuItem/Create
-        public ActionResult Create()
+        public ActionResult Create(int menuId)
         {
-            return View();
+            var emptyMenuItem = new MenuItem();
+            emptyMenuItem.MenuId = menuId;
+            return View(emptyMenuItem);
         }
 
         //
