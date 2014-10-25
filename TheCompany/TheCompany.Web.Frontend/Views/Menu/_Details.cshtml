@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TheCompany.Data.MenuItem>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grams)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>Admin Operations</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleBG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionBG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grams)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "MenuItem", new { id = item.Id }, null)
+                @Html.ActionLink("Delete", "Delete", "MenuItem", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
+</table>

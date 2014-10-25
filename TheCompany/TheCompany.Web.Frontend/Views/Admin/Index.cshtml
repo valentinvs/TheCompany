@@ -4,9 +4,6 @@
 }
 
 <h2>This is the admin page!</h2>
-<h3>Admin List:</h3>
-@foreach (var admin in Model)
-{
-    <div>Username: @admin.UserName</div>
-    <hr />
-}
+
+<h3>@Html.ActionLink("Create Menu", "Create", "Menu")</h3>
+<h3>@Html.ActionLink("Available Menus", "Index", "Menu")</h3>

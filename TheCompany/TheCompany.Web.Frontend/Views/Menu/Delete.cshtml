@@ -1,0 +1,22 @@
+﻿@model TheCompany.Data.Menu
+
+@{
+    ViewBag.Title = "Delete Menu";
+}
+
+<h2>Delete Menu</h2>
+
+<h3>Are you sure you want to delete "@Model.TitleEN" menu?</h3>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+    <h4>The menu has the following menu items:</h4>
+    @{Html.RenderPartial("_Details", @Model.MenuItems);}
+</div>

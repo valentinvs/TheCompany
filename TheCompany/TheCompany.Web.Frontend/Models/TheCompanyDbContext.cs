@@ -11,5 +11,7 @@ namespace TheCompany.Web.Frontend.Models
         }
 
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<ContactInfo> ContactInfos { get; set; }
     }
 }

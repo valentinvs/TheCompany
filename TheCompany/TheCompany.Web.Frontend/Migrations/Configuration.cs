@@ -1,4 +1,4 @@
-namespace TheCompany.Web.Frontend.Migrations
+﻿namespace TheCompany.Web.Frontend.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -8,6 +8,7 @@ namespace TheCompany.Web.Frontend.Migrations
     using System.Data.Entity.Validation;
     using System.Linq;
     using TheCompany.Common;
+    using TheCompany.Data;
     using TheCompany.Web.Frontend.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TheCompanyDbContext>
@@ -42,6 +43,32 @@ namespace TheCompany.Web.Frontend.Migrations
                 if (!db.Users.Any(user => user.UserName == "Admin"))
                 {
                     db.Users.AddOrUpdate(adminUser);
+                }
+
+                var theCompanyDb = new TheCompanyDbContext();
+                var menu = new Menu();
+                menu.TitleEN = "Starters";
+                menu.TitleBG = "Предястия";
+
+                if (!theCompanyDb.Menus.Any(m => m.TitleEN == menu.TitleEN))
+                {
+                    theCompanyDb.Menus.Add(menu);
+                    theCompanyDb.SaveChanges();
+                }
+
+                var menuItem = new MenuItem();
+                menuItem.TitleEN = "New Zealand Green Shell Mussels";
+                menuItem.TitleBG = "Новозеландски миди";
+                menuItem.Price = 9.50m;
+                menuItem.Grams = 200;
+                menuItem.DescriptionBG = "Запечени с масло и чесън, чушки, лук и подправени с балсомово-лимонен дресинг";
+                menuItem.DescriptionEN = "Grilled with Garlic Butter, bell peppers, shallots, onion, tomato and enhanced by a balsamic lemon dressing.";
+                menuItem.MenuId = menu.Id;
+
+                if (!theCompanyDb.MenuItems.Any(m => m.TitleEN == menuItem.TitleEN))
+                {
+                    theCompanyDb.MenuItems.Add(menuItem);
+                    theCompanyDb.SaveChanges();
                 }
 
                 db.SaveChanges();

@@ -1,0 +1,17 @@
+﻿@model TheCompany.Data.Menu
+
+@{
+    ViewBag.Title = "Menu Details";
+}
+
+<h2>Menu Details - @Model.TitleEN | @Model.TitleBG</h2>
+<div>
+    <p>
+        @Html.ActionLink("Add Menu Item", "Create", "MenuItem", new { MenuId = Model.Id }, null) |
+        @Html.ActionLink("Edit Menu Titles", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to Menu List", "Index")
+    </p>
+</div>
+<br />
+<h4>The menu is having the following menu items:</h4>
+@{Html.RenderPartial("_Details", @Model.MenuItems);}
