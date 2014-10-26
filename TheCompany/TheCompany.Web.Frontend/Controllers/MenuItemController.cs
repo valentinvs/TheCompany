@@ -83,10 +83,11 @@ namespace TheCompany.Web.Frontend.Controllers
         {
             try
             {
-                menuItemToDelete.Deleted = true;
+                var itemToDelete = TheCompanyDb.MenuItems.First(mi => mi.Id == id);
+                itemToDelete.Deleted = true;
                 TheCompanyDb.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Menu", new { id = itemToDelete.MenuId });
             }
             catch
             {

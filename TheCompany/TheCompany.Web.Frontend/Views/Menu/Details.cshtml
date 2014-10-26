@@ -8,10 +8,9 @@
 <div>
     <p>
         @Html.ActionLink("Add Menu Item", "Create", "MenuItem", new { MenuId = Model.Id }, null) |
-        @Html.ActionLink("Edit Menu Titles", "Edit", new { id = Model.Id }) |
         @Html.ActionLink("Back to Menu List", "Index")
     </p>
 </div>
 <br />
 <h4>The menu is having the following menu items:</h4>
-@{Html.RenderPartial("_Details", @Model.MenuItems);}
+@{Html.RenderPartial("_Details", @Model.MenuItems.Where(mi => mi.Deleted == false));}
