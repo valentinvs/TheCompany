@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TitleEN)
+            @Html.DisplayNameFor(model => model.ContactLabelEN)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TitleBG)
+            @Html.DisplayNameFor(model => model.ContactLabelBG)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DescriptionEN)
+            @Html.DisplayNameFor(model => model.ContactDataEN)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DescriptionBG)
+            @Html.DisplayNameFor(model => model.ContactDataBG)
         </th>
         <th>
             Admin Operations
@@ -31,16 +31,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TitleEN)
+            @Html.DisplayFor(modelItem => item.ContactLabelEN)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TitleBG)
+            @Html.DisplayFor(modelItem => item.ContactLabelBG)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DescriptionEN)
+            @Html.DisplayFor(modelItem => item.ContactDataEN)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DescriptionBG)
+            @Html.DisplayFor(modelItem => item.ContactDataBG)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id })

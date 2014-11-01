@@ -57,10 +57,10 @@ namespace TheCompany.Web.Frontend.Controllers
             try
             {
                 var toUpdate = TheCompanyDb.ContactInfos.First(c => c.Id == id);
-                toUpdate.TitleEN = updatedContactInfo.TitleEN;
-                toUpdate.TitleBG = updatedContactInfo.TitleBG;
-                toUpdate.DescriptionEN = updatedContactInfo.DescriptionEN;
-                toUpdate.DescriptionBG = updatedContactInfo.DescriptionBG;
+                toUpdate.ContactLabelEN = updatedContactInfo.ContactLabelEN;
+                toUpdate.ContactLabelBG = updatedContactInfo.ContactLabelBG;
+                toUpdate.ContactDataEN = updatedContactInfo.ContactDataEN;
+                toUpdate.ContactDataBG = updatedContactInfo.ContactDataBG;
                 TheCompanyDb.SaveChanges();
 
                 return RedirectToAction("Index");
