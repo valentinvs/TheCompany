@@ -10,9 +10,7 @@ namespace TheCompany.Web.Frontend.Controllers
     {
         public ActionResult Index()
         {
-            var db = new ApplicationDbContext();
-            var admins = db.Users.Where(user => user.Roles.Any(role => role.Role.Name == RolesConst.Admin)).ToList();
-            return View(admins);
+            return View();
         }
 	}
 }

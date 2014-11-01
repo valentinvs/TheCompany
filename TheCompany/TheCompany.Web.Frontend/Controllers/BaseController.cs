@@ -4,7 +4,6 @@ using TheCompany.Web.Frontend.Models;
 
 namespace TheCompany.Web.Frontend.Controllers
 {
-    [Authorize(Roles = RolesConst.Admin)]
     public class BaseController : Controller
     {
         public BaseController()

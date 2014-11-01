@@ -163,6 +163,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CuisineController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Global.asax.cs">
@@ -237,9 +238,11 @@
     <Content Include="Views\ContactInfo\Create.cshtml" />
     <Content Include="Views\ContactInfo\Edit.cshtml" />
     <Content Include="Views\ContactInfo\Delete.cshtml" />
+    <Content Include="Views\Cuisine\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
