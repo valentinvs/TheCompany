@@ -68,7 +68,7 @@
             }
         }
 
-        private static void CreateMenuItem(TheCompanyDbContext theCompanyDb, Menu menu, string titleEN, string titleBG, string descriptionBG, string descriptionEN, double grams, decimal price)
+        private static void CreateMenuItem(TheCompanyDbContext theCompanyDb, Menu menu, string titleEN, string titleBG, string descriptionBG, string descriptionEN, double grams, decimal price, string picturePath = null, string thumbnailPath = null)
         {
             var menuItem = new MenuItem();
             menuItem.TitleEN = titleEN;
@@ -78,6 +78,9 @@
             menuItem.Grams = grams;
             menuItem.Price = price;
             menuItem.MenuId = menu.Id;
+            menuItem.PicturePath = picturePath;
+            menuItem.ThumbnailPath = thumbnailPath;
+
 
             if (!theCompanyDb.MenuItems.Any(m => m.TitleEN == menuItem.TitleEN && m.MenuId == menu.Id && m.Deleted == false))
             {
@@ -86,12 +89,14 @@
             }
         }
 
-        private static Menu CreateMenu(TheCompanyDbContext dbContext, string titleEN, string titleBG, int? parentMenuId)
+        private static Menu CreateMenu(TheCompanyDbContext dbContext, string titleEN, string titleBG, int? parentMenuId, string picturePath = null, string thumbnailPath = null)
         {
             var menu = new Menu();
             menu.TitleEN = titleEN;
             menu.TitleBG = titleBG;
             menu.ParentMenuId = parentMenuId;
+            menu.PicturePath = picturePath;
+            menu.ThumbnailPath = thumbnailPath;
 
             if (!dbContext.Menus.Any(m => m.TitleEN == menu.TitleEN && m.Deleted == false))
             {
