@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TheCompany.Data.Menu>
+﻿@model IEnumerable<TheCompany.Data.MenuViewModel>
 
 @{
     ViewBag.Title = "Available Menus";
@@ -17,23 +17,33 @@
         <th>
             @Html.DisplayNameFor(model => model.TitleBG)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentMenuId)
+        </th>
         <th>Admin Operations</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TitleEN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TitleBG)
-        </td>
-        <td>
-            @Html.ActionLink("Menu Items", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Edit Titles", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete Menu", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleBG)
+            </td>
+            <td>
+                @if (item.ParentMenuId != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Menus.Where(x => x.Value == item.ParentMenuId.ToString()).FirstOrDefault().Text)
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Manage Menu Items", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit Menu", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete Menu", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

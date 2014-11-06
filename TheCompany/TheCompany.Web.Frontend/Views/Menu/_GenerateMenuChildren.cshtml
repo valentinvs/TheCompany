@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TheCompany.Data.MenuViewModel>
+
+@if (Model != null)
+{
+    <ul class="dl-submenu">
+        @foreach (var menu in Model)
+        {
+            <li>
+                <a href="#">@menu.TitleEN</a>
+                @Html.Action("GetMenuChildren", "Menu", new { id = menu.Id })
+
+                <ul class="dl-submenu">
+                    @foreach (var menuItem in menu.MenuItems)
+                    {
+                        <li>
+                            <a href="#">@menuItem.TitleEN</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+}

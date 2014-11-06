@@ -239,6 +239,7 @@
     <Content Include="Views\ContactInfo\Edit.cshtml" />
     <Content Include="Views\ContactInfo\Delete.cshtml" />
     <Content Include="Views\Cuisine\Index.cshtml" />
+    <Content Include="Views\Menu\_GenerateMenuChildren.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,18 +1,13 @@
 ﻿@model IEnumerable<TheCompany.Data.Menu>
-@{
-    ViewBag.Title = "Kitchen";
-}
-<h2>Kitchen</h2>
 
-<h3>Implement the menu navigationo bar</h3>
-@*@section Scripts{
-        @Scripts.Render("~/bundles/jqueryui")
-
-        <script>
-            $(document).ready(function () {
-                $(function () {
-                    $('#menu').menu({ position: { at: "left bottom" } });
-                });
-            });
-        </script>
-    }*@
+<div id="dl-menu" class="dl-menuwrapper">
+    <ul class="dl-menu">
+        <li>
+            @foreach (var item in Model)
+            {
+                <a href="#">@item.TitleEN</a>
+                @Html.Action("GetMenuChildren", "Menu", new { id = item.Id });
+            }
+        </li>
+    </ul>
+</div>

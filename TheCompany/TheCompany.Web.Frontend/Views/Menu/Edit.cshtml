@@ -1,4 +1,4 @@
-﻿@model TheCompany.Data.Menu
+﻿@model TheCompany.Data.MenuViewModel
 
 @{
     ViewBag.Title = "Edit Menu";
@@ -29,6 +29,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TitleBG)
                 @Html.ValidationMessageFor(model => model.TitleBG)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ParentMenuId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ParentMenuId, Model.Menus, optionLabel: "- Select -")
+                @Html.ValidationMessageFor(model => model.ParentMenuId)
             </div>
         </div>
 

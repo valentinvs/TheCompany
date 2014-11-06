@@ -12,7 +12,7 @@ namespace TheCompany.Web.Frontend.Controllers
         // GET: /Kitchen/
         public ActionResult Index()
         {
-            var availbleMenus = TheCompanyDb.Menus.Where(m => m.Deleted == false);
+            var availbleMenus = TheCompanyDb.Menus.Where(m => m.Deleted == false && m.ParentMenuId == null);
             return View(availbleMenus);
         }
 
